@@ -346,9 +346,10 @@ Public Class F1_ServicioVenta
         TbNit.Text = "0"
         TbNombre1.Text = "S/N"
         _CodClienteCredito = 0
-
+        tbCliente.Clear()
+        _CodCliente = 0
         tbanular.Value = True
-        cbsector.Focus()
+
 
 
         Try
@@ -363,7 +364,7 @@ Public Class F1_ServicioVenta
 
         tbEstado.SelectedIndex = 0
         swTipoVenta.SelectedIndex = 1
-
+        tbCliente.Focus()
 
     End Sub
     Public Sub _prMostrarRegistro(_N As Integer)
@@ -382,7 +383,8 @@ Public Class F1_ServicioVenta
 
             _CodVehiculo = .GetValue("vcnumivehic")
 
-            ''_CodCliente = .GetValue("vcclie")
+            _CodCliente = .GetValue("vcclie")
+            tbCliente.Text = .GetValue("cliente")
 
             tbObservacion.Text = .GetValue("vcobs")
             NroCompronbante = .GetValue("vcidcore")
@@ -571,11 +573,6 @@ Public Class F1_ServicioVenta
             .Width = 350
             .Visible = True
         End With
-        With grdetalle.RootTable.Columns("alumno")
-            .Caption = "ALUMNO"
-            .Width = 350
-            .Visible = True
-        End With
         With grdetalle.RootTable.Columns("vdcmin")
             .Width = 160
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -684,7 +681,7 @@ Public Class F1_ServicioVenta
         End With
         With grVentas.RootTable.Columns("sector")
             .Width = 120
-            .Visible = True
+            .Visible = False
             .Caption = "SECTOR"
         End With
         With grVentas.RootTable.Columns("nit")
@@ -692,7 +689,11 @@ Public Class F1_ServicioVenta
             .Visible = True
             .Caption = "NIT"
         End With
-
+        With grVentas.RootTable.Columns("cliente")
+            .Width = 120
+            .Visible = True
+            .Caption = "CLIENTE"
+        End With
         With grVentas.RootTable.Columns("vcidcore")
             .Width = 90
             .Visible = False
@@ -875,18 +876,7 @@ Public Class F1_ServicioVenta
         End If
     End Function
 
-    Public Function fn_ValidarAlumnos() As Boolean
-        Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
-        For i As Integer = 0 To dt.Rows.Count - 1 Step 1
-            Dim estado As Integer = dt.Rows(i).Item("estado")
-            If (estado >= 0) Then
-                If (dt.Rows(i).Item("vdprod") <= 0) Then
-                    Return False
-                End If
-            End If
-        Next
-        Return True
-    End Function
+
 
     Public Function _ValidarCampos() As Boolean
         'If (IsNumeric(TbNit.Text) = False) Then
@@ -941,11 +931,7 @@ Public Class F1_ServicioVenta
         '    End If
 
         'End If
-        If (Not fn_ValidarAlumnos()) Then
-            Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
-            ToastNotification.Show(Me, "Existen servicios sin Alumnos por favor seleccione un alumno por detalle".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-            Return False
-        End If
+
         'codigo danny
         'validar detalle si todos los servicios son con factura
         Dim cantServSinFactura As Integer = 0
@@ -1230,55 +1216,6 @@ Public Class F1_ServicioVenta
         Dim numi As String = ""
         Dim dt As DataTable = L_fnEsDosificacionManual(1, tbFechaVenta.Value.ToString("yyyy/MM/dd"))
         Dim bandera As Boolean = False
-
-
-
-        'If tbTipoVenta.Value = False And _conFactura = True Then
-        '    If (dt.Rows.Count > 0) Then
-        '        Dim fechaI As String = CType(dt.Rows(0).Item("sbfdel"), DateTime).ToString("yyyy/MM/dd")
-        '        Dim FechaF As String = CType(dt.Rows(0).Item("sbfal"), DateTime).ToString("yyyy/MM/dd")
-        '        NumiDosificacion = dt.Rows(0).Item("sbnumi")
-        '        LimiteEmision = dt.Rows(0).Item("sbfal")
-        '        '_Cod_Control = ControlCode.generateControlCode(_Autorizacion, _NumFac
-
-        '        If (_ExisteDatosFactura(dt.Rows(0).Item("sbinicio"), dt.Rows(0).Item("sbfinal"), 1, fechaI, FechaF) = False) Then
-        '            Return
-        '        Else
-        '            bandera = True
-        '            ''*************codigo Danny
-        '            Dim codControl1 As String = String.Empty
-        '            Dim nroAutorizacion1 As String = dt.Rows(0).Item("sbautoriz")
-        '            CodigoControl = codControl1
-        '            NroAutorizacion = nroAutorizacion1
-        '            ''*************
-
-        '            'P_fnGenerarFacturaManual(numi)
-        '        End If
-        '    Else
-        '        Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-        '        ToastNotification.Show(Me, "no existe la dosificacion manual para esta sucursal, por lo tanto no se puede realizar la facturacion manual".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-        '        Return
-        '    End If
-        'End If
-
-        'If tbTipoVenta.Value = True And _conFactura = True Then
-        '    Dim dtSet As DataSet = L_Dosificacion("1", 1, tbFechaVenta.Value.ToString("yyyy/MM/dd"))
-        '    If dtSet.Tables.Count > 0 Then
-        '        If dtSet.Tables(0).Rows.Count = 0 Then
-        '            Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-        '            ToastNotification.Show(Me, "no existe la dosificacion automatica habilitada para esta sucursal, por lo tanto no se puede realizar la facturacion automatica".ToUpper, img, 4000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-        '            Return
-        '        End If
-        '    Else
-
-        '        Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-        '        ToastNotification.Show(Me, "no existe la dosificacion automatica habilitada para esta sucursal, por lo tanto no se puede realizar la facturacion automatica".ToUpper, img, 4000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-        '        Return
-        '    End If
-        'End If
-        ' vcnumi ,@vcidcore ,@vcsector ,@vcSecNumi ,@vcnumivehic ,@vcalm ,@vcfdoc ,@vcclie ,@vcfvcr ,@vctipo ,
-        '@vcest ,@vcobs ,@vcdesc ,@vctotal 
-
         Dim res As Boolean = L_fnGrabarVentaLavadero(numi, cbsector.Value, tbsecnumi.Text, _CodVehiculo, 1, tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodCliente, tbFechaVenc.Value.ToString("yyyy/MM/dd"), swTipoVenta.Value, 0, tbObservacion.Text, tbMdesc.Value, tbtotal.Value, CType(grdetalle.DataSource, DataTable), _CodClienteCredito, CType(grdetalle.DataSource, DataTable), IIf(tbTipoVenta.Value = True, 1, 0), IIf(tbanular.Value = True, 1, 0), 1, _Codbanco)
 
 
@@ -1441,7 +1378,7 @@ Public Class F1_ServicioVenta
             _prAddDetalleVenta()
 
         End If
-        cbsector.Focus()
+        tbCliente.Focus()
 
 
 
@@ -2593,7 +2530,7 @@ Public Class F1_ServicioVenta
         '[vdptot2] [Decimal](18, 2) NULL,
         '[estado] [Int] NULL
 
-        CType(grdetalle.DataSource, DataTable).Rows.Add(_fnSiguienteNumi() + 1, 0, 0, 0, "", "", 0, 0, 0, 0, 0, 0, "", 0, 0, 0)
+        CType(grdetalle.DataSource, DataTable).Rows.Add(_fnSiguienteNumi() + 1, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, "", 0, 0, 0)
     End Sub
     Private Sub _HabilitarProductos()
         GPanelProductos.Visible = True
@@ -2605,16 +2542,7 @@ Public Class F1_ServicioVenta
         grServicios.MoveTo(grServicios.FilterRow)
         grServicios.Col = 1
     End Sub
-    Private Sub _HabilitarAlumnos()
-        GPanelProductos.Visible = True
-        GPanelProductos.Text = "LISTA DE ALUMNOS"
-        PanelInferior.Visible = False
-        PanelTotal.Visible = False
-        _prCargarTablaAlumnos()
-        grServicios.Focus()
-        grServicios.MoveTo(grServicios.FilterRow)
-        grServicios.Col = 1
-    End Sub
+
     Private Sub grdetalle_KeyDown(sender As Object, e As KeyEventArgs) Handles grdetalle.KeyDown
         If (Not _fnAccesible()) Then
             Return
@@ -2653,13 +2581,7 @@ salirIf:
             _HabilitarProductos()
 
         End If
-        If (e.KeyData = Keys.Control + Keys.Enter And grdetalle.Row >= 0 And
-            grdetalle.Col = grdetalle.RootTable.Columns("alumno").Index) Then
-            Dim indexfil As Integer = grdetalle.Row
-            Dim indexcol As Integer = grdetalle.Col
-            _HabilitarAlumnos()
 
-        End If
         If (e.KeyData = Keys.Escape And grdetalle.Row >= 0) Then
             _prEliminarFila()
         End If
@@ -2676,18 +2598,7 @@ salirIf:
         End If
 
     End Sub
-    Private Sub _DesHabilitarAlumno()
-        If (GPanelProductos.Visible = True) Then
-            GPanelProductos.Visible = False
-            PanelInferior.Visible = True
-            grdetalle.Select()
-            grdetalle.Col = 5
 
-
-            PanelTotal.Visible = True
-        End If
-
-    End Sub
 
 
 
@@ -2797,8 +2708,7 @@ salirIf:
 
                 If ((pos >= 0)) Then 'And (Not existe)
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("vdprod") = grServicios.GetValue("id")
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("alumno") = grServicios.GetValue("nombres")
-                    _DesHabilitarAlumno()
+
 
                 Else
                     If (existe) Then
@@ -3197,5 +3107,51 @@ salirIf:
 
     Private Sub LabelX21_Click(sender As Object, e As EventArgs)
 
+    End Sub
+
+    Private Sub tbCliente_KeyDown(sender As Object, e As KeyEventArgs) Handles tbCliente.KeyDown
+        If (_fnAccesible()) Then
+
+
+            Dim dt As DataTable
+
+            dt = L_fnListarClientes(1)
+            '          a.ydnumi , a.yddesc, tipodocumento.cndesc1  As documento, a.yddctnum, a.yddirec 
+            ',a.ydtelf1   ,a.ydfnac 
+
+            Dim listEstCeldas As New List(Of Modelos.Celda)
+            listEstCeldas.Add(New Modelos.Celda("ydnumi", True, "ID", 50))
+            listEstCeldas.Add(New Modelos.Celda("yddesc", True, "NOMBRE", 280))
+            listEstCeldas.Add(New Modelos.Celda("yddctnum", True, "N. Documento".ToUpper, 150))
+            listEstCeldas.Add(New Modelos.Celda("yddirec", True, "DIRECCION", 220))
+            listEstCeldas.Add(New Modelos.Celda("ydtelf1", True, "Telefono".ToUpper, 200))
+            listEstCeldas.Add(New Modelos.Celda("ydfnac", True, "F.Nacimiento".ToUpper, 150, "MM/dd,YYYY"))
+            Dim ef = New Efecto
+            ef.tipo = 3
+            ef.dt = dt
+            ef.SeleclCol = 1
+            ef.listEstCeldas = listEstCeldas
+            ef.alto = 50
+            ef.ancho = 350
+            ef.Context = "Seleccione Cliente".ToUpper
+            ef.ShowDialog()
+            Dim bandera As Boolean = False
+            bandera = ef.band
+            If (bandera = True) Then
+                Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
+                If (IsNothing(Row)) Then
+                    tbCliente.Focus()
+                    Return
+
+                End If
+                _CodCliente = Row.Cells("ydnumi").Value
+                tbCliente.Text = Row.Cells("yddesc").Value
+                grdetalle.Focus()
+
+            End If
+
+
+
+        End If
     End Sub
 End Class

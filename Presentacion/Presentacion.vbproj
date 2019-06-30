@@ -422,6 +422,12 @@
     <Compile Include="Nuevos Programas\F0_CargaVentasManuales.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Nuevos Programas\F1_Clientes.designer.vb">
+      <DependentUpon>F1_Clientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Nuevos Programas\F1_Clientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PR_ArqueoDiario.Designer.vb">
       <DependentUpon>PR_ArqueoDiario.vb</DependentUpon>
     </Compile>
@@ -972,6 +978,9 @@
     <EmbeddedResource Include="Nuevos Programas\F0_CargaVentasManuales.resx">
       <DependentUpon>F0_CargaVentasManuales.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Nuevos Programas\F1_Clientes.resx">
+      <DependentUpon>F1_Clientes.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PR_ArqueoDiario.resx">
       <DependentUpon>PR_ArqueoDiario.vb</DependentUpon>
     </EmbeddedResource>
@@ -1494,6 +1503,10 @@
     <None Include="Resources\icono2.png" />
     <None Include="Resources\icono.png" />
     <None Include="Resources\folder.png" />
+    <None Include="Resources\jpg.png" />
+    <None Include="Resources\iconacercar.png" />
+    <None Include="Resources\iconalejar.png" />
+    <None Include="Resources\markerIcono.png" />
     <Content Include="Resources\nuevo2.png" />
     <Content Include="Resources\ok.png" />
     <None Include="Resources\search.png" />
