@@ -25,7 +25,7 @@ Public Class PR_EstadoCuentasResultados
         'tbFechaAl.CustomFormat = "MMMM yyyy"
         tbGestion.Value = Now.Date.Year
         tbFechaDel.Value = New Date(tbGestion.Value, 1, 1)
-        tbFechaAl.Value = New Date(tbGestion.Value, 1, 1)
+        tbFechaAl.Value = New Date(tbGestion.Value, 12, 31)
     End Sub
     Private Sub _prCargarComboAuxiliaresVariablesSucursales(numi As String)
         Dim dt As New DataTable
@@ -178,7 +178,7 @@ Public Class PR_EstadoCuentasResultados
 
             objrep.SetParameterValue("fechaDesde", tbFechaDel.Value.Date.ToString("dd/MM/yyyy"))
             objrep.SetParameterValue("fechaHasta", tbFechaAl.Value.Date.ToString("dd/MM/yyyy"))
-            objrep.SetParameterValue("titulo", "AUTOMOVIL CLUB BOLIVIANO " + gs_empresaDesc.ToUpper)
+            objrep.SetParameterValue("titulo", "COFRICO SANTA CRUZ DE LA SIERRA")
             objrep.SetParameterValue("nit", gs_empresaNit.ToUpper)
             objrep.SetParameterValue("nmes", nmes)
 

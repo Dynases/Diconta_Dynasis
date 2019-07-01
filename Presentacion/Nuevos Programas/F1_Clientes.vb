@@ -279,7 +279,7 @@ Public Class F1_Clientes
         _prCrearCarpetaTemporal()
         BtAdicionar.Visible = True
         tbCodCliente.ReadOnly = False
-        tbNombre.Focus()
+        tbRazonSocial.Focus()
         ''  SuperTabItem1.Visible =True 
     End Sub
 
@@ -371,7 +371,7 @@ Public Class F1_Clientes
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter
                                       )
-            tbNombre.Focus()
+            tbRazonSocial.Focus()
 
         Else
             Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)

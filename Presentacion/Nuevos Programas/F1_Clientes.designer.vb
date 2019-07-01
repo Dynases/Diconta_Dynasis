@@ -45,12 +45,8 @@ Partial Class F1_Clientes
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.GroupPanel3 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.SuperTabControl1 = New DevComponents.DotNetBar.SuperTabControl()
-        Me.SuperTabControlPanel1 = New DevComponents.DotNetBar.SuperTabControlPanel()
-        Me.grayuda = New Janus.Windows.GridEX.GridEX()
-        Me.SuperTabItem1 = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel3 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.UsImg = New Presentacion.UCImg()
         Me.BtAdicionar = New DevComponents.DotNetBar.ButtonX()
         Me.LabelX15 = New DevComponents.DotNetBar.LabelX()
         Me.SuperTabItem3 = New DevComponents.DotNetBar.SuperTabItem()
@@ -59,6 +55,9 @@ Partial Class F1_Clientes
         Me.ButtonX3 = New DevComponents.DotNetBar.ButtonX()
         Me.Gmc_Cliente = New GMap.NET.WindowsForms.GMapControl()
         Me.SuperTabItem2 = New DevComponents.DotNetBar.SuperTabItem()
+        Me.SuperTabControlPanel1 = New DevComponents.DotNetBar.SuperTabControlPanel()
+        Me.grayuda = New Janus.Windows.GridEX.GridEX()
+        Me.SuperTabItem1 = New DevComponents.DotNetBar.SuperTabItem()
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.LabelX16 = New DevComponents.DotNetBar.LabelX()
@@ -78,6 +77,7 @@ Partial Class F1_Clientes
         Me.lbgrupo2 = New DevComponents.DotNetBar.LabelX()
         Me.btTipoDoc = New DevComponents.DotNetBar.ButtonX()
         Me.cbTipoDoc = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
+        Me.UsImg = New Presentacion.UCImg()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -101,11 +101,11 @@ Partial Class F1_Clientes
         Me.GroupPanel3.SuspendLayout()
         CType(Me.SuperTabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabControl1.SuspendLayout()
-        Me.SuperTabControlPanel1.SuspendLayout()
-        CType(Me.grayuda, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabControlPanel3.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.SuperTabControlPanel2.SuspendLayout()
+        Me.SuperTabControlPanel1.SuspendLayout()
+        CType(Me.grayuda, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupPanel2.SuspendLayout()
         Me.Panel4.SuspendLayout()
         CType(Me.cbTipoDoc, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -392,7 +392,7 @@ Partial Class F1_Clientes
         Me.tbNombre.Name = "tbNombre"
         Me.tbNombre.PreventEnterBeep = True
         Me.tbNombre.Size = New System.Drawing.Size(323, 30)
-        Me.tbNombre.TabIndex = 2
+        Me.tbNombre.TabIndex = 1
         '
         'LabelX3
         '
@@ -443,7 +443,7 @@ Partial Class F1_Clientes
         Me.tbDireccion.Name = "tbDireccion"
         Me.tbDireccion.PreventEnterBeep = True
         Me.tbDireccion.Size = New System.Drawing.Size(331, 29)
-        Me.tbDireccion.TabIndex = 3
+        Me.tbDireccion.TabIndex = 2
         '
         'LabelX4
         '
@@ -511,7 +511,7 @@ Partial Class F1_Clientes
         Me.tbObs.Name = "tbObs"
         Me.tbObs.PreventEnterBeep = True
         Me.tbObs.Size = New System.Drawing.Size(272, 64)
-        Me.tbObs.TabIndex = 6
+        Me.tbObs.TabIndex = 5
         '
         'Panel1
         '
@@ -570,7 +570,7 @@ Partial Class F1_Clientes
         Me.tbRazonSocial.Name = "tbRazonSocial"
         Me.tbRazonSocial.PreventEnterBeep = True
         Me.tbRazonSocial.Size = New System.Drawing.Size(323, 30)
-        Me.tbRazonSocial.TabIndex = 237
+        Me.tbRazonSocial.TabIndex = 0
         '
         'tbTelf2
         '
@@ -586,7 +586,7 @@ Partial Class F1_Clientes
         Me.tbTelf2.Name = "tbTelf2"
         Me.tbTelf2.PreventEnterBeep = True
         Me.tbTelf2.Size = New System.Drawing.Size(147, 30)
-        Me.tbTelf2.TabIndex = 5
+        Me.tbTelf2.TabIndex = 4
         '
         'tbTelf1
         '
@@ -602,7 +602,7 @@ Partial Class F1_Clientes
         Me.tbTelf1.Name = "tbTelf1"
         Me.tbTelf1.PreventEnterBeep = True
         Me.tbTelf1.Size = New System.Drawing.Size(147, 30)
-        Me.tbTelf1.TabIndex = 4
+        Me.tbTelf1.TabIndex = 3
         '
         'TableLayoutPanel1
         '
@@ -725,9 +725,9 @@ Partial Class F1_Clientes
         Me.SuperTabControl1.ControlBox.MenuBox.Name = ""
         Me.SuperTabControl1.ControlBox.Name = ""
         Me.SuperTabControl1.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabControl1.ControlBox.MenuBox, Me.SuperTabControl1.ControlBox.CloseBox})
+        Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel1)
         Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel3)
         Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel2)
-        Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel1)
         Me.SuperTabControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControl1.Location = New System.Drawing.Point(0, 0)
         Me.SuperTabControl1.Margin = New System.Windows.Forms.Padding(4)
@@ -741,34 +741,6 @@ Partial Class F1_Clientes
         Me.SuperTabControl1.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabItem1, Me.SuperTabItem2, Me.SuperTabItem3})
         Me.SuperTabControl1.TabStyle = DevComponents.DotNetBar.eSuperTabStyle.Office2010BackstageBlue
         Me.SuperTabControl1.Text = "SuperTabControl1"
-        '
-        'SuperTabControlPanel1
-        '
-        Me.SuperTabControlPanel1.Controls.Add(Me.grayuda)
-        Me.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel1.Location = New System.Drawing.Point(0, 29)
-        Me.SuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(4)
-        Me.SuperTabControlPanel1.Name = "SuperTabControlPanel1"
-        Me.SuperTabControlPanel1.Size = New System.Drawing.Size(577, 354)
-        Me.SuperTabControlPanel1.TabIndex = 1
-        Me.SuperTabControlPanel1.TabItem = Me.SuperTabItem1
-        '
-        'grayuda
-        '
-        Me.grayuda.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grayuda.Location = New System.Drawing.Point(0, 0)
-        Me.grayuda.Margin = New System.Windows.Forms.Padding(4)
-        Me.grayuda.Name = "grayuda"
-        Me.grayuda.Size = New System.Drawing.Size(577, 354)
-        Me.grayuda.TabIndex = 0
-        '
-        'SuperTabItem1
-        '
-        Me.SuperTabItem1.AttachedControl = Me.SuperTabControlPanel1
-        Me.SuperTabItem1.GlobalItem = False
-        Me.SuperTabItem1.Name = "SuperTabItem1"
-        Me.SuperTabItem1.TabFont = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SuperTabItem1.Text = "Ayuda"
         '
         'SuperTabControlPanel3
         '
@@ -795,16 +767,6 @@ Partial Class F1_Clientes
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(577, 354)
         Me.Panel2.TabIndex = 223
-        '
-        'UsImg
-        '
-        Me.UsImg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.UsImg.BackColor = System.Drawing.Color.Transparent
-        Me.UsImg.Location = New System.Drawing.Point(133, 17)
-        Me.UsImg.Margin = New System.Windows.Forms.Padding(5)
-        Me.UsImg.Name = "UsImg"
-        Me.UsImg.Size = New System.Drawing.Size(413, 316)
-        Me.UsImg.TabIndex = 222
         '
         'BtAdicionar
         '
@@ -922,6 +884,34 @@ Partial Class F1_Clientes
         Me.SuperTabItem2.GlobalItem = False
         Me.SuperTabItem2.Name = "SuperTabItem2"
         Me.SuperTabItem2.Text = "Ubicacion"
+        '
+        'SuperTabControlPanel1
+        '
+        Me.SuperTabControlPanel1.Controls.Add(Me.grayuda)
+        Me.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SuperTabControlPanel1.Location = New System.Drawing.Point(0, 29)
+        Me.SuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(4)
+        Me.SuperTabControlPanel1.Name = "SuperTabControlPanel1"
+        Me.SuperTabControlPanel1.Size = New System.Drawing.Size(577, 354)
+        Me.SuperTabControlPanel1.TabIndex = 1
+        Me.SuperTabControlPanel1.TabItem = Me.SuperTabItem1
+        '
+        'grayuda
+        '
+        Me.grayuda.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grayuda.Location = New System.Drawing.Point(0, 0)
+        Me.grayuda.Margin = New System.Windows.Forms.Padding(4)
+        Me.grayuda.Name = "grayuda"
+        Me.grayuda.Size = New System.Drawing.Size(577, 354)
+        Me.grayuda.TabIndex = 0
+        '
+        'SuperTabItem1
+        '
+        Me.SuperTabItem1.AttachedControl = Me.SuperTabControlPanel1
+        Me.SuperTabItem1.GlobalItem = False
+        Me.SuperTabItem1.Name = "SuperTabItem1"
+        Me.SuperTabItem1.TabFont = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SuperTabItem1.Text = "Ayuda"
         '
         'GroupPanel2
         '
@@ -1074,7 +1064,7 @@ Partial Class F1_Clientes
         Me.tbFnac.Margin = New System.Windows.Forms.Padding(4)
         Me.tbFnac.Name = "tbFnac"
         Me.tbFnac.Size = New System.Drawing.Size(161, 30)
-        Me.tbFnac.TabIndex = 7
+        Me.tbFnac.TabIndex = 5
         '
         'tbNit
         '
@@ -1090,7 +1080,7 @@ Partial Class F1_Clientes
         Me.tbNit.Name = "tbNit"
         Me.tbNit.PreventEnterBeep = True
         Me.tbNit.Size = New System.Drawing.Size(221, 30)
-        Me.tbNit.TabIndex = 5
+        Me.tbNit.TabIndex = 3
         '
         'LabelX12
         '
@@ -1123,7 +1113,7 @@ Partial Class F1_Clientes
         Me.tbNombFac.Name = "tbNombFac"
         Me.tbNombFac.PreventEnterBeep = True
         Me.tbNombFac.Size = New System.Drawing.Size(355, 30)
-        Me.tbNombFac.TabIndex = 4
+        Me.tbNombFac.TabIndex = 2
         '
         'LabelX11
         '
@@ -1160,7 +1150,7 @@ Partial Class F1_Clientes
         Me.swEstado.OnTextColor = System.Drawing.Color.White
         Me.swEstado.Size = New System.Drawing.Size(181, 27)
         Me.swEstado.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.swEstado.TabIndex = 6
+        Me.swEstado.TabIndex = 4
         Me.swEstado.Value = True
         Me.swEstado.ValueObject = "Y"
         '
@@ -1195,7 +1185,7 @@ Partial Class F1_Clientes
         Me.tbNdoc.Name = "tbNdoc"
         Me.tbNdoc.PreventEnterBeep = True
         Me.tbNdoc.Size = New System.Drawing.Size(221, 30)
-        Me.tbNdoc.TabIndex = 3
+        Me.tbNdoc.TabIndex = 1
         '
         'LabelX7
         '
@@ -1259,8 +1249,18 @@ Partial Class F1_Clientes
         Me.cbTipoDoc.SelectedIndex = -1
         Me.cbTipoDoc.SelectedItem = Nothing
         Me.cbTipoDoc.Size = New System.Drawing.Size(192, 30)
-        Me.cbTipoDoc.TabIndex = 2
+        Me.cbTipoDoc.TabIndex = 0
         Me.cbTipoDoc.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
+        '
+        'UsImg
+        '
+        Me.UsImg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.UsImg.BackColor = System.Drawing.Color.Transparent
+        Me.UsImg.Location = New System.Drawing.Point(133, 17)
+        Me.UsImg.Margin = New System.Windows.Forms.Padding(5)
+        Me.UsImg.Name = "UsImg"
+        Me.UsImg.Size = New System.Drawing.Size(413, 316)
+        Me.UsImg.TabIndex = 222
         '
         'F1_Clientes
         '
@@ -1297,12 +1297,12 @@ Partial Class F1_Clientes
         Me.GroupPanel3.ResumeLayout(False)
         CType(Me.SuperTabControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabControl1.ResumeLayout(False)
-        Me.SuperTabControlPanel1.ResumeLayout(False)
-        CType(Me.grayuda, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabControlPanel3.ResumeLayout(False)
         Me.SuperTabControlPanel3.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.SuperTabControlPanel2.ResumeLayout(False)
+        Me.SuperTabControlPanel1.ResumeLayout(False)
+        CType(Me.grayuda, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupPanel2.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()

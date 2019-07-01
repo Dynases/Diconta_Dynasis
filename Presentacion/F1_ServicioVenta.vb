@@ -2872,8 +2872,11 @@ salirIf:
             _prAddDetalleVenta()
 
         End If
-        'grdetalle.Col = 0
+        grdetalle.Select()
+
+        grdetalle.Col = 4
         grdetalle.Row = 0
+
     End Sub
 
     Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
@@ -3065,7 +3068,7 @@ salirIf:
         objrep.SetDataSource(dt)
         objrep.SetParameterValue("usuario", gs_user)
         objrep.SetParameterValue("observacion", gs_user)
-        objrep.SetParameterValue("lugarFecha", "Cochabamba, " + Str(tbFechaVenta.Value.Day) + " De " + MonthName(tbFechaVenta.Value.Month) + " De " + Str(tbFechaVenta.Value.Year))
+        objrep.SetParameterValue("lugarFecha", "Santa Cruz, " + Str(tbFechaVenta.Value.Day) + " De " + MonthName(tbFechaVenta.Value.Month) + " De " + Str(tbFechaVenta.Value.Year))
         P_Global.Visualizador.CRV1.ReportSource = objrep 'Comentar
         P_Global.Visualizador.Show() 'Comentar
         P_Global.Visualizador.BringToFront() 'Comentar
@@ -3125,7 +3128,7 @@ salirIf:
             listEstCeldas.Add(New Modelos.Celda("yddctnum", True, "N. Documento".ToUpper, 150))
             listEstCeldas.Add(New Modelos.Celda("yddirec", True, "DIRECCION", 220))
             listEstCeldas.Add(New Modelos.Celda("ydtelf1", True, "Telefono".ToUpper, 200))
-            listEstCeldas.Add(New Modelos.Celda("ydfnac", True, "F.Nacimiento".ToUpper, 150, "MM/dd,YYYY"))
+            listEstCeldas.Add(New Modelos.Celda("ydfnac", True, "F.Nacimiento".ToUpper, 150, "MM/dd/YYYY"))
             Dim ef = New Efecto
             ef.tipo = 3
             ef.dt = dt

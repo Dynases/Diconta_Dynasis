@@ -121,7 +121,7 @@ Public Class PR_EstadoCuentasResultadosV2
 
                 objrep.SetParameterValue("fechaDesde", tbFechaDel.Value.ToString("dd/MM/yyyy"))
                 objrep.SetParameterValue("fechaHasta", tbFechaAl.Value.ToString("dd/MM/yyyy"))
-                objrep.SetParameterValue("titulo", "AUTOMOVIL CLUB BOLIVIANO " + gs_empresaDesc.ToUpper)
+                objrep.SetParameterValue("titulo", "COFRICO SANTA CRUZ DE LA SIERRA")
                 objrep.SetParameterValue("nit", gs_empresaNit.ToUpper)
 
                 MReportViewer.ReportSource = objrep

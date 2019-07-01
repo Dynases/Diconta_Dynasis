@@ -255,7 +255,7 @@ Public Class F1_ServicioCuentas
     Private Sub grServicios_EditingCell(sender As Object, e As EditingCellEventArgs) Handles grServicios.EditingCell
         If (_fnVisualizarRegistros()) Then
             'Habilitar solo las columnas de Precio, %, Monto y Observación
-            If (e.Column.Index = grServicios.RootTable.Columns("senrocuenta").Index Or e.Column.Index = grServicios.RootTable.Columns("seref").Index Or e.Column.Index = grServicios.RootTable.Columns("sefactu").Index) Then
+            If (e.Column.Index = grServicios.RootTable.Columns("seref").Index Or e.Column.Index = grServicios.RootTable.Columns("sefactu").Index) Then
                 e.Cancel = False
             Else
                 e.Cancel = True
@@ -321,6 +321,49 @@ Public Class F1_ServicioCuentas
                 grServicios.SetValue("existe", 1)
             End If
 
+        End If
+    End Sub
+
+    Private Sub grServicios_KeyDown(sender As Object, e As KeyEventArgs) Handles grServicios.KeyDown
+        If (Not _fnVisualizarRegistros()) Then
+            Return
+        End If
+
+        If (e.KeyData = Keys.Control + Keys.Enter) Then
+            Dim f, c As Integer
+            c = grServicios.Col
+            f = grServicios.Row
+
+            If (grServicios.Col = grServicios.RootTable.Columns("senrocuenta").Index) Then
+
+                Dim dt As DataTable
+
+                dt = L_fnListarCuentasServicios()
+                ''cacta , cadesc, camon
+
+                Dim listEstCeldas As New List(Of Modelos.Celda)
+                listEstCeldas.Add(New Modelos.Celda("cacta", True, "Nro Cuenta", 100))
+                listEstCeldas.Add(New Modelos.Celda("cadesc", True, "Descripción", 300))
+                listEstCeldas.Add(New Modelos.Celda("camon", True, "Moneda".ToUpper, 150))
+                Dim ef = New Efecto
+                ef.tipo = 3
+                ef.dt = dt
+                ef.SeleclCol = 1
+                ef.listEstCeldas = listEstCeldas
+                ef.alto = 50
+                ef.ancho = 350
+                ef.Context = "Seleccione una Cuenta".ToUpper
+                ef.ShowDialog()
+                Dim bandera As Boolean = False
+                bandera = ef.band
+                If (bandera = True) Then
+                    Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
+                    If (IsNothing(Row)) Then
+                        Return
+                    End If
+                    grServicios.SetValue("senrocuenta", Row.Cells("cacta").Value)
+                End If
+            End If
         End If
     End Sub
 

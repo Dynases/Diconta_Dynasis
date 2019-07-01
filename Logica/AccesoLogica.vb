@@ -7315,6 +7315,17 @@ SUC001 .canumi =ZY003.ydsuc" + _Cadena
 
         Return _Tabla
     End Function
+    Public Shared Function L_fnListarCuentasServicios() As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 5))
+        _listParam.Add(New Datos.DParametro("@yduact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TY004", _listParam)
+
+        Return _Tabla
+    End Function
     Public Shared Function L_fnModificarClientes(ByRef _ydnumi As String, _ydcod As String,
                                                _ydrazonSocial As String, _yddesc As String, _ydnumiVendedor As Integer, _ydzona As Integer,
                                                 _yddct As Integer, _yddctnum As String,
