@@ -446,7 +446,7 @@ Public Class F0_LibroVenta
 
         'objrep.SetParameterValue("empresaDesc", gs_empresaDescSistema)
         objrep.SetParameterValue("empresaDesc", "COFRICO " + gs_empresaDesc.ToUpper)
-        'gs_empresaDireccion
+        gs_empresaDireccion = "COTOCA"
         objrep.SetParameterValue("empresaDirec", gs_empresaDireccion)
         If gi_empresaNumi = 1 Then 'filial
             Dim dtSucursal As DataTable = L_fnDosificacionObtenerDatosSucursal(CbAlmacen.Value)

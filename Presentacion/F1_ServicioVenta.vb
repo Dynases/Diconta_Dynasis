@@ -1220,40 +1220,39 @@ Public Class F1_ServicioVenta
 
 
         If res Then
-            'If _conFactura Then 'venta con factura
-            '    If (bandera = True) Then
-            '        P_fnGenerarFacturaManual(numi)
-            '    Else
-            '        If (gb_FacturaEmite) Then
+            If _conFactura Then 'venta con factura
+                If (bandera = True) Then
+                    P_fnGenerarFacturaManual(numi)
+                Else
+                    If (gb_FacturaEmite) Then
+
+                        P_fnGenerarFactura(numi)
 
 
-            '            P_fnGenerarFactura(numi)
 
-
-
-            '        End If
-            '    End If
-            'Else 'venta con recibo
-            P_GenerarReporte(numi)
-            'End If
+                    End If
+                End If
+            Else 'venta con recibo
+                P_GenerarReporte(numi)
+            End If
 
 
             SuperTabControl1.SelectedTabIndex = 0
 
-            Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-            ToastNotification.Show(Me, "Código de Venta ".ToUpper + tbCodigo.Text + " Grabado con Exito.".ToUpper,
+                        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+                        ToastNotification.Show(Me, "Código de Venta ".ToUpper + tbCodigo.Text + " Grabado con Exito.".ToUpper,
                                       img, 2000,
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter
                                       )
-            '_prImiprimirNotaVenta(numi)
+                        '_prImiprimirNotaVenta(numi)
 
-            _prCargarVenta()
+                        _prCargarVenta()
 
-            _Limpiar()
+                        _Limpiar()
 
-        Else
-            If (numi = -100) Then
+                    Else
+                        If (numi = -100) Then
 
                 Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
                 ToastNotification.Show(Me, "La Venta ya se encuentra registrada vuelva hacia atras y revise los datos".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
@@ -3042,15 +3041,15 @@ salirIf:
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
         If btnGrabar.Enabled = False Then
-            'If CbOP.Checked = False Then
-            '    P_prImprimirFacturaCopia(tbCodigo.Text, swreporte.Value)
-            'Else
-            '    P_prImprimirRecibo(tbCodigo.Text, True, True)
+            If CbOP.Checked = False Then
+                P_prImprimirFacturaCopia(tbCodigo.Text, swreporte.Value)
+            Else
+                P_prImprimirRecibo(tbCodigo.Text, True, True)
 
-            'End If
+            End If
             P_GenerarReporte(tbCodigo.Text)
 
-        End If
+            End If
     End Sub
 
     Private Sub P_GenerarReporte(numi As String)
