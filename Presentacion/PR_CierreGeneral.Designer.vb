@@ -54,15 +54,17 @@ Partial Class PR_CierreGeneral
         '
         'PanelPrincipal
         '
-        Me.PanelPrincipal.Size = New System.Drawing.Size(273, 410)
+        Me.PanelPrincipal.Location = New System.Drawing.Point(343, 0)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(293, 410)
         '
         'MReportViewer
         '
-        Me.MReportViewer.Size = New System.Drawing.Size(273, 410)
+        Me.MReportViewer.Size = New System.Drawing.Size(293, 410)
+        Me.MReportViewer.ToolPanelWidth = 200
         '
         'MGPFiltros
         '
-        Me.MGPFiltros.Size = New System.Drawing.Size(363, 410)
+        Me.MGPFiltros.Size = New System.Drawing.Size(343, 410)
         '
         '
         '
@@ -94,13 +96,14 @@ Partial Class PR_CierreGeneral
         '
         'PanelIzq
         '
-        Me.PanelIzq.Size = New System.Drawing.Size(363, 410)
+        Me.PanelIzq.Size = New System.Drawing.Size(343, 410)
         Me.PanelIzq.Controls.SetChildIndex(Me.MGPFiltros, 0)
         Me.PanelIzq.Controls.SetChildIndex(Me.PanelEx1, 0)
         Me.PanelIzq.Controls.SetChildIndex(Me.GroupPanelFiltros, 0)
         '
         'PanelEx1
         '
+        Me.PanelEx1.Size = New System.Drawing.Size(343, 76)
         Me.PanelEx1.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelEx1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
         Me.PanelEx1.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
@@ -170,7 +173,8 @@ Partial Class PR_CierreGeneral
         Me.GroupPanelFiltros.Controls.Add(Me.tbFechaAl)
         Me.GroupPanelFiltros.Controls.Add(Me.LabelX3)
         Me.GroupPanelFiltros.Controls.Add(Me.tbFechaDel)
-        Me.GroupPanelFiltros.Size = New System.Drawing.Size(363, 334)
+        Me.GroupPanelFiltros.Location = New System.Drawing.Point(0, 76)
+        Me.GroupPanelFiltros.Size = New System.Drawing.Size(343, 334)
         '
         '
         '
@@ -199,6 +203,13 @@ Partial Class PR_CierreGeneral
         '
         '
         Me.GroupPanelFiltros.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.GroupPanelFiltros.Controls.SetChildIndex(Me.tbFechaDel, 0)
+        Me.GroupPanelFiltros.Controls.SetChildIndex(Me.LabelX3, 0)
+        Me.GroupPanelFiltros.Controls.SetChildIndex(Me.tbFechaAl, 0)
+        Me.GroupPanelFiltros.Controls.SetChildIndex(Me.LabelX1, 0)
+        Me.GroupPanelFiltros.Controls.SetChildIndex(Me.GroupPanel1, 0)
+        Me.GroupPanelFiltros.Controls.SetChildIndex(Me.LabelX5, 0)
+        Me.GroupPanelFiltros.Controls.SetChildIndex(Me.cbSucursal, 0)
         '
         'LabelX1
         '
@@ -316,7 +327,7 @@ Partial Class PR_CierreGeneral
         Me.GroupPanel1.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanel1.Location = New System.Drawing.Point(0, 154)
         Me.GroupPanel1.Name = "GroupPanel1"
-        Me.GroupPanel1.Size = New System.Drawing.Size(357, 100)
+        Me.GroupPanel1.Size = New System.Drawing.Size(335, 100)
         '
         '
         '

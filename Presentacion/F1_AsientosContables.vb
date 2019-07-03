@@ -373,7 +373,7 @@ Public Class F1_AsientosContables
                             If (dtnombre.Rows.Count > 0) Then
 
                                 If (numeroCuenta <> dtCuentaServ.Rows(i).Item("senrocuenta")) Then
-                                    Dim totalDescuento As Double = (dttotc.Rows(0).Item("total"))
+                                    Dim totalDescuento As Double = (dttotc.Rows(0).Item("total") - (dttotc.Rows(0).Item("total") * 0.13))
 
                                     dt.Rows.Add(numiCuentaHijo, dtCuentaServ.Rows(i).Item("senrocuenta"), dtnombre.Rows(0).Item("cadesc"), DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, Escuela, 0)
                                     numeroCuenta = dtCuentaServ.Rows(i).Item("senrocuenta")

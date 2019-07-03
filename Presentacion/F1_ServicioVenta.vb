@@ -1922,7 +1922,7 @@ Public Class F1_ServicioVenta
             objrep.SetParameterValue("nroAutorizacion", _Ds.Tables(0).Rows(0).Item("fvaautoriz"))
             objrep.SetParameterValue("MensajeContribuyente", "''" + _Ds1.Tables(0).Rows(0).Item("sbnota").ToString + "''.")
             objrep.SetParameterValue("nit", _Ds2.Tables(0).Rows(0).Item("scnit").ToString)
-            objrep.SetParameterValue("lugarFecha", "Cochabamba, " + Str(tbFechaVenta.Value.Day) + " De " + MonthName(tbFechaVenta.Value.Month) + " De " + Str(tbFechaVenta.Value.Year))
+            objrep.SetParameterValue("lugarFecha", "Cotoca, Santa Cruz, " + Str(tbFechaVenta.Value.Day) + " De " + MonthName(tbFechaVenta.Value.Month) + " De " + Str(tbFechaVenta.Value.Year))
             objrep.SetParameterValue("nombreFactura", TbNombre1.Text)
             objrep.SetParameterValue("nitCliente", TbNit.Text)
             objrep.SetParameterValue("TotalBs", _Literal)
@@ -2094,7 +2094,7 @@ Public Class F1_ServicioVenta
             objrep.SetParameterValue("nroAutorizacion", _Ds.Tables(0).Rows(0).Item("fvaautoriz"))
             objrep.SetParameterValue("MensajeContribuyente", "''" + _Ds1.Tables(0).Rows(0).Item("sbnota").ToString + "''.")
             objrep.SetParameterValue("nit", _Ds2.Tables(0).Rows(0).Item("scnit").ToString)
-            objrep.SetParameterValue("lugarFecha", "Cochabamba, " + Str(tbFechaVenta.Value.Day) + " De " + MonthName(tbFechaVenta.Value.Month) + " De " + Str(tbFechaVenta.Value.Year))
+            objrep.SetParameterValue("lugarFecha", "Cotoca, Santa Cruz, " + Str(tbFechaVenta.Value.Day) + " de " + MonthName(tbFechaVenta.Value.Month) + " de " + Str(tbFechaVenta.Value.Year))
             objrep.SetParameterValue("nombreFactura", TbNombre1.Text)
             objrep.SetParameterValue("nitCliente", TbNit.Text)
             objrep.SetParameterValue("TotalBs", _Literal)
@@ -2252,7 +2252,7 @@ Public Class F1_ServicioVenta
             objrep.SetParameterValue("nroAutorizacion", _Ds.Tables(0).Rows(0).Item("fvaautoriz"))
             objrep.SetParameterValue("MensajeContribuyente", "''" + _Ds1.Tables(0).Rows(0).Item("sbnota").ToString + "''.")
             objrep.SetParameterValue("nit", _Ds2.Tables(0).Rows(0).Item("scnit").ToString)
-            objrep.SetParameterValue("lugarFecha", "Cochabamba, " + Str(tbFechaVenta.Value.Day) + " De " + MonthName(tbFechaVenta.Value.Month) + " De " + Str(tbFechaVenta.Value.Year))
+            objrep.SetParameterValue("lugarFecha", "Cotoca, Santa Cruz, " + Str(tbFechaVenta.Value.Day) + " de " + MonthName(tbFechaVenta.Value.Month) + " de " + Str(tbFechaVenta.Value.Year))
             objrep.SetParameterValue("nombreFactura", TbNombre1.Text)
             objrep.SetParameterValue("nitCliente", TbNit.Text)
             objrep.SetParameterValue("TotalBs", _Literal)
@@ -3067,7 +3067,7 @@ salirIf:
         objrep.SetDataSource(dt)
         objrep.SetParameterValue("usuario", gs_user)
         objrep.SetParameterValue("observacion", gs_user)
-        objrep.SetParameterValue("lugarFecha", "Santa Cruz, " + Str(tbFechaVenta.Value.Day) + " De " + MonthName(tbFechaVenta.Value.Month) + " De " + Str(tbFechaVenta.Value.Year))
+        objrep.SetParameterValue("lugarFecha", "Cotoca,Santa Cruz, " + Str(tbFechaVenta.Value.Day) + " de " + MonthName(tbFechaVenta.Value.Month) + " de " + Str(tbFechaVenta.Value.Year))
         P_Global.Visualizador.CRV1.ReportSource = objrep 'Comentar
         P_Global.Visualizador.Show() 'Comentar
         P_Global.Visualizador.BringToFront() 'Comentar
